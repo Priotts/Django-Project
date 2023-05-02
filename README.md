@@ -42,6 +42,9 @@ py .\manage.py migrate
 ```bash
 py .\manage.py createsuperuser
 ```
+- Add your API, wallet and private key to the utilis.py file in the 'certificates' app
+![code](https://user-images.githubusercontent.com/94853311/235701038-6e4262ee-a9aa-4882-ad82-7ed0fc6d8ba9.png)
+
 - Install the redis server (it will be used for ip control)
 ```bash
 sudo service redis-server start
