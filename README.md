@@ -16,6 +16,8 @@ Additionally, the system stores the last IP address that accessed the platform f
 
 - A page that anyone can access and enter the identification code of a degree certificate to view all associated information and the transaction.
 
+ATTENTION! Before searching for a certificate, you must assign it to a student.
+
 ![image](https://user-images.githubusercontent.com/94853311/235691018-ce5e9570-2bb8-4a2d-ba52-4ed5e37613b8.png)
 
 - A logging system to store the last IP address of an administrator who accessed the platform, in order to display a warning message when it is different from the previous one.
