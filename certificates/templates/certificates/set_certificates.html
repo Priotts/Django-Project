@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="spacer2"></div>
+
+<form method="POST" class="form1">
+  <div class="grid grid--center">
+    <div class="card">
+      <div class="card-body">
+        <h4><em>Select the student and the certificate to save it on the blockchain</em></h4>
+        {% csrf_token %}
+        <div class="row">
+          <label for="id_students" class="label">Students:</label>
+          <select class="form-input" id="username" name="username">
+            {% for student in students %}
+            <option value="{{ student.username }}">{{ student.username }}</option>
+            {% endfor %}
+          </select>
+          <label for="id_certificates" class="label">Certificates:</label>
+          <select class="form-input" id="name_certificate" name="name_certificate">
+            {% for certificate in certificates %}
+            <option value="{{ certificate.name_certificate }}">{{ certificate.name_certificate }}</option>
+            {% endfor %}
+          </select>
+          <label for="id_vote" class="label">Vote:</label>
+          <input type="number" class="form-input" id="id_vote" name="vote">
+        </div>
+        <input type="submit" value="Submit" class="button2">
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

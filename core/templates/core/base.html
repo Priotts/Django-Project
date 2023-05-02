@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+</head>
+
+<body>
+
+  <div class="overflow-h">
+
+    <header class="header">
+      <div class="header__content">
+        <a class="header__logo" href="{% url 'w3school' %}">
+          <strong>W3School</strong>
+        </a>
+        <ul class="header__menu">
+          <li><a href="{% url 'w3school' %}">Home</a></li>
+          <li><a href="{% url 'search_certificates' %}">Search</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% if user.is_staff %}
+          <li><a href="{% url 'addcertificates' %}">Add certificates</a></li>
+          <li><a href="{% url 'certificates'%} ">Assingn certificates</a></li>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'admin_log' %}">Admin login</a></li>
+          {% endif %}
+        </ul>
+        <div class="header__quick">
+          <a class="button-small" href="">Contacts</a>
+        </div>
+      </div>
+    </header>
+  </div>
+  {% block content %}
+
+  {% endblock %}
+
+  <div class="spacer"></div>
+
+  <div class="grid grid--center">
+    {% if c_messages %}
+    <div class="alert mt-2" role="alert">
+      {% for message in c_messages %}
+      {% if message.tags == 'success' %}
+      <div class="success-message">{{ message }}</div>
+      {% elif message.tags == 'error' %}
+      <div class="error-message">{{ message }}</div>
+      {% else %}
+      <div>{{ message }}</div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <script>
+    let item = document.querySelector('.icon-hamburger');
+    item.addEventListener("click", function () {
+      document.body.classList.toggle('menu-open');
+    });
+  </script>
+
+</body>
+
+</html>

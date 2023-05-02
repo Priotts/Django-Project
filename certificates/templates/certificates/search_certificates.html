@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="spacer2"></div>
+
+<form action="{% url 'search_certificates' %}" method="GET">
+    <div class="grid grid--center">
+        <div class="card">
+            <div class="card-body">
+                <h4>Enter the certificate code to view the transactions</h3>
+                <div class="row">
+                    <p><u><em>You can only search for a certificate after after assigning it.</em></u></p>
+                    <input type="text" name="code">
+                    <input type="submit" value="Search" class="button1">
+                </div>
+            </div>
+        </div>
+    </div>  
+</form>
+
+<div class="spacer"></div>
+<div class="grid grid--center">
+    {% if code %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Certificate</th>
+                    <th>Date</th>
+                    <th>Vote</th>
+                    <th>Tx</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in code %}
+                <tr>
+                    <td>{{ x.students.first_name }} {{ x.students.last_name }}</td>
+                    <td>{{ x.certificates.name_certificate }}</td>
+                    <td>{{ x.date }}</td>
+                    <td>{{ x.vote }}</td>
+                    <td><a href="https://goerli.etherscan.io/tx/{{ x.txid }}" target="_blank">{{ x.txid }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+
+{% endblock %}

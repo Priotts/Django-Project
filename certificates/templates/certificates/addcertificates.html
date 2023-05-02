@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="spacer2"></div>
+
+<form method="POST" class="form">
+  <div class="grid grid--center">
+    <div class="card">
+      <div class="card-body">
+        <h4>Add certificates</h4>
+        {% csrf_token %}
+        <div class="row">
+          {% for field in form %}
+            <div class="col">
+              <div class="form-group">
+              <label for="{{ field.id }}" class="cust">{{ field.label }}</label>
+              {{ field }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <input type="submit" value="Add" class="button2">
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

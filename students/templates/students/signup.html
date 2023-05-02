@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{{ form.errors }}
+
+{% block content %}
+
+<div class="spacer2"></div>
+
+<form method="POST" class="form">
+  <div class="grid grid--center">
+    <div class="card">
+      <div class="card-body">
+        {% csrf_token %}
+        <div class="row">
+          {{ form.as_p }}
+        </div>
+        <input type="submit" value="Submit" class="button2">
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

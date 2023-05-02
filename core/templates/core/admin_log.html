@@ -1,0 +1,26 @@
+{{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="spacer2"></div>
+
+<form action="{% url 'admin_log' %}" method="POST">
+  <div class="grid grid--center">
+    <div class="card">
+      <div class="card-body">
+        <h4><em>Login</em></h4>
+        {% csrf_token %}
+        <div class="row">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" name="username">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <input type="submit" value="Submit" class="button2">
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}}
